@@ -139,6 +139,7 @@ for index in submission.index.tolist():
             predicted_mask = predicted_mask_single
         else:
             predicted_mask += predicted_mask_single
+        predicted_mask = predicted_mask / len(MODEL_PATHS)
 
     predicted_mask_with_threshold = np.zeros((256, 256))
     predicted_mask_with_threshold[predicted_mask[0, :, :] < THR] = 0
