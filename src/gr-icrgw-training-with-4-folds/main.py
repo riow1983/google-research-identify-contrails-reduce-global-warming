@@ -7,6 +7,8 @@ proj_name = "gr-icrgw-training-with-4-folds"
 
 import os
 os.system("pip install timm")
+os.system("pip install pytorch-lightning")
+
 import sys
 sys.path.append(f"/content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/pretrained-models-pytorch")
 sys.path.append(f"/content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/efficientnet-pytorch")
