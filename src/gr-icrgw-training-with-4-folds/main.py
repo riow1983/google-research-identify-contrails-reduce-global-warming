@@ -49,10 +49,11 @@ with open("config.yaml", "r") as file_obj:
     config = yaml.safe_load(file_obj)
 
 if config["exp"] == "debug":
-    config["max_epochs"] = 2
-    config["min_epochs"] = 2
+    config["trainer"]["max_epochs"] = 2
+    config["trainer"]["min_epochs"] = 2
+    # print(config)
+    # raise ValueError("Stop here")
 print(config)
-raise ValueError("Stop here")
 
 wandb_login(config["wandb_json_path"], kaggle_env=False)
 
@@ -125,8 +126,11 @@ for fold in config["train_folds"]:
 
     wandb_logger = WandbLogger(project=proj_name, 
                                name=f'fold{fold}_exp{config["exp"]}',
+                               id=f'fold{fold}_exp{config["exp"]}',
                                log_model="all",
-                               save_dir=config["output_dir"]+f'/logs_fold{fold}_exp{config["exp"]}/')
+                               save_dir=config["output_dir"],
+                               reinit=True) # This is equivalent to wandb.init()
+    
     trainer = pl.Trainer(
         callbacks=[checkpoint_callback, early_stop_callback, progress_bar_callback],
         # logger=CSVLogger(save_dir=f'logs_f{fold}/'),
@@ -148,6 +152,7 @@ for fold in config["train_folds"]:
         checkpoint_callback,
         progress_bar_callback,
         early_stop_callback,
+        wandb_logger,
     )
     torch.cuda.empty_cache()
     gc.collect()
