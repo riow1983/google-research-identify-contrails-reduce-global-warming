@@ -8,6 +8,7 @@ proj_name = "gr-icrgw-training-with-4-folds"
 import os
 os.system("pip install timm")
 os.system("pip install pytorch-lightning")
+os.system("pip install wandb")
 
 import sys
 sys.path.append(f"/content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/pretrained-models-pytorch")
@@ -36,7 +37,10 @@ from sklearn.model_selection import KFold
 # from pytorch_lightning.loggers import CSVLogger
 from pytorch_lightning.loggers import WandbLogger
 
+from dataset import ContrailsDataset
+from module import LightningModule
 from _wandb import wandb_login
+from utils import send_line_notification
 
 torch.set_float32_matmul_precision("medium")
 
