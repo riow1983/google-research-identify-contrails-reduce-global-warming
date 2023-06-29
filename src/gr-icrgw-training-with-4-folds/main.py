@@ -9,6 +9,7 @@ import os
 os.system("pip install timm")
 os.system("pip install pytorch-lightning")
 os.system("pip install wandb")
+os.system("pip install transformers")
 
 import sys
 sys.path.append(f"/content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/pretrained-models-pytorch")
@@ -112,9 +113,9 @@ for fold in config["train_folds"]:
         callbacks=[checkpoint_callback, early_stop_callback, progress_bar_callback],
         # logger=CSVLogger(save_dir=f'logs_f{fold}/'),
         logger=WandbLogger(project=proj_name, 
-                           name=f"fold{fold}_exp{config.exp}",
+                           name=f'fold{fold}_exp{config["exp"]}',
                            log_model="all",
-                           save_dir=config["output_dir"]+f'/logs_fold{fold}_exp{config["exp"]}/')
+                           save_dir=config["output_dir"]+f'/logs_fold{fold}_exp{config["exp"]}/'),
         **config["trainer"],
     )
 

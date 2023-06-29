@@ -29,8 +29,8 @@ trainer:
     max_epochs: 20
     min_epochs: 20
     enable_progress_bar: True
-    precision: "16-mixed"
-    devices: 2
+    precision: 16 #"16-mixed"
+    devices: 1 #2
 
 model:
     seg_model: "Unet"
