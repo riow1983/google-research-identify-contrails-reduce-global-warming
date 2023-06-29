@@ -48,6 +48,10 @@ torch.set_float32_matmul_precision("medium")
 with open("config.yaml", "r") as file_obj:
     config = yaml.safe_load(file_obj)
 
+if config["exp"] == "debug":
+    config["max_epochs"] = 2
+    config["min_epochs"] = 2
+
 wandb_login(config["wandb_json_path"], kaggle_env=False)
 
 pl.seed_everything(config["seed"])
@@ -58,8 +62,17 @@ contrails = os.path.join(config["data_path"], "contrails/")
 train_path = os.path.join(config["data_path"], "train_df.csv")
 valid_path = os.path.join(config["data_path"], "valid_df.csv")
 
-train_df = pd.read_csv(train_path)
-valid_df = pd.read_csv(valid_path)
+if config["exp"] == "debug":
+    train_df = pd.read_csv(train_path, nrows=1000)
+    valid_df = pd.read_csv(valid_path, nrows=100)
+    # train_df = pd.read_csv(train_path)
+    # valid_df = pd.read_csv(valid_path)
+    # print("train_df.shape: ", train_df.shape) # train_df.shape:  (20529, 2)
+    # print("valid_df.shape: ", valid_df.shape) # valid_df.shape:   (1856, 2)
+    # raise ValueError("Stop here")
+else:
+    train_df = pd.read_csv(train_path)
+    valid_df = pd.read_csv(valid_path)
 
 train_df["path"] = contrails + train_df["record_id"].astype(str) + ".npy"
 valid_df["path"] = contrails + valid_df["record_id"].astype(str) + ".npy"
@@ -75,7 +88,7 @@ for fold in config["train_folds"]:
     print(f"\n###### Fold {fold}")
     trn_df = df[df.kfold != fold].reset_index(drop=True)
     vld_df = df[df.kfold == fold].reset_index(drop=True)
-
+    
     dataset_train = ContrailsDataset(trn_df, config["model"]["image_size"], train=True)
     dataset_validation = ContrailsDataset(vld_df, config["model"]["image_size"], train=False)
 
