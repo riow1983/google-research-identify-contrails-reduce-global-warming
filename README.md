@@ -28,6 +28,10 @@ https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-gl
 
 # Kaggle Datasets
 - [Contrails Images (Ash Color)](https://www.kaggle.com/datasets/shashwatraman/contrails-images-ash-color?select=contrails)
+```
+train_df.shape:  (20529, 2)
+valid_df.shape:  (1856, 2)
+```
 
 # Documentations
 
