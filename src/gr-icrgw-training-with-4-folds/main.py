@@ -51,6 +51,8 @@ with open("config.yaml", "r") as file_obj:
 if config["exp"] == "debug":
     config["max_epochs"] = 2
     config["min_epochs"] = 2
+print(config)
+raise ValueError("Stop here")
 
 wandb_login(config["wandb_json_path"], kaggle_env=False)
 
@@ -121,14 +123,14 @@ for fold in config["train_folds"]:
 
     early_stop_callback = EarlyStopping(**config["early_stop"])
 
-
+    wandb_logger = WandbLogger(project=proj_name, 
+                               name=f'fold{fold}_exp{config["exp"]}',
+                               log_model="all",
+                               save_dir=config["output_dir"]+f'/logs_fold{fold}_exp{config["exp"]}/')
     trainer = pl.Trainer(
         callbacks=[checkpoint_callback, early_stop_callback, progress_bar_callback],
         # logger=CSVLogger(save_dir=f'logs_f{fold}/'),
-        logger=WandbLogger(project=proj_name, 
-                           name=f'fold{fold}_exp{config["exp"]}',
-                           log_model="all",
-                           save_dir=config["output_dir"]+f'/logs_fold{fold}_exp{config["exp"]}/'),
+        logger=wandb_logger,
         **config["trainer"],
     )
 
