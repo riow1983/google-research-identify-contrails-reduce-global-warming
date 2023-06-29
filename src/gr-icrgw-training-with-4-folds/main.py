@@ -129,5 +129,5 @@ for fold in config["train_folds"]:
     gc.collect()
 
 
-os.system(f"cp /content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/src/{proj_name}/config.yaml {config["output_dir"]}/config.yaml")
-send_line_notification(f"Training of {proj_name} exp{config["exp"]} has been done.", config["line_json_path"])
+os.system(f'cp /content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/src/{proj_name}/config.yaml {config["output_dir"]}/config.yaml')
+send_line_notification(f'Training of {proj_name} exp{config["exp"]} has been done.', config["line_json_path"])
