@@ -41,7 +41,7 @@ valid_df.shape:  (1856, 2)
 - [OpenContrails: Benchmarking Contrail Detection on GOES-16 ABI](https://arxiv.org/pdf/2304.02122.pdf)
 
 # Tips
-- W&Bのrun nameはGUI上でdeleteすると同じnameのrunが出来なくなるので要注意
+- W&Bのrunはdeleteすると, 同じrun idのrunが実行出来なくなるので要注意 (逆に同一run idのrunが存在している場合はresumeされる)
 
 # Snipets
 
