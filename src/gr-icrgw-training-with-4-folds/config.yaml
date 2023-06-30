@@ -1,4 +1,4 @@
-exp: "debug"
+exp: 0 #"debug"
 # data_path: "/kaggle/input/contrails-images-ash-color"
 data_path: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/input/contrails-images-ash-color"
 output_dir: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/output/gr-icrgw-training-with-4-folds/unet_models"
