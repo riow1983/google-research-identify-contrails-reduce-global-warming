@@ -37,6 +37,7 @@ from torch.utils.data import DataLoader
 from sklearn.model_selection import KFold
 # from pytorch_lightning.loggers import CSVLogger
 from pytorch_lightning.loggers import WandbLogger
+import wandb
 
 from dataset import ContrailsDataset
 from module import LightningModule
@@ -128,8 +129,7 @@ for fold in config["train_folds"]:
                                name=f'fold{fold}_exp{config["exp"]}',
                                id=f'fold{fold}_exp{config["exp"]}',
                                log_model="all",
-                               save_dir=config["output_dir"],
-                               reinit=True) # This is equivalent to wandb.init()
+                               save_dir=config["output_dir"]) # This is equivalent to wandb.init()
     
     trainer = pl.Trainer(
         callbacks=[checkpoint_callback, early_stop_callback, progress_bar_callback],
@@ -141,6 +141,8 @@ for fold in config["train_folds"]:
     model = LightningModule(config["model"])
 
     trainer.fit(model, data_loader_train, data_loader_validation)
+    # wandb_logger.finalize()
+    wandb.finish()
 
     del (
         dataset_train,
