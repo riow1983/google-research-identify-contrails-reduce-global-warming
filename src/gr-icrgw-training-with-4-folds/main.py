@@ -88,7 +88,7 @@ for n, (trn_index, val_index) in enumerate(Fold.split(df)):
     df.loc[val_index, "kfold"] = int(n)
 df["kfold"] = df["kfold"].astype(int)
 
-wandb_urls = {}
+
 for fold in config["train_folds"]:
     print(f"\n###### Fold {fold}")
     trn_df = df[df.kfold != fold].reset_index(drop=True)
@@ -143,8 +143,9 @@ for fold in config["train_folds"]:
     model = LightningModule(config["model"])
 
     trainer.fit(model, data_loader_train, data_loader_validation)
+    if fold == len(config["train_folds"]) - 1:
+        wandb_url = wandb.run.url
     # wandb_logger.finalize()
-    wandb_urls[fold] = wandb.run.url
     wandb.finish()
 
     del (
@@ -164,4 +165,4 @@ for fold in config["train_folds"]:
 
 
 os.system(f'cp /content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/src/{proj_name}/config.yaml {config["output_dir"]}/config.yaml')
-send_line_notification(f'Training of {proj_name} EXP{config["exp"]} has been done. \nSee {wandb_urls}', config["line_json_path"])
+send_line_notification(f'Training of {proj_name} EXP{config["exp"]} has been done. \nSee {wandb_url}', config["line_json_path"])
