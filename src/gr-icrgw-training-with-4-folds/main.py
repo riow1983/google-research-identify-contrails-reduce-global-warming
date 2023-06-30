@@ -127,7 +127,8 @@ for fold in config["train_folds"]:
 
     wandb_logger = WandbLogger(project=proj_name, 
                                name=f'FOLD{fold}-EXP{config["exp"]}',
-                               id=f'FOLD{fold}-EXP{config["exp"]}',
+                               # id=f'FOLD{fold}-EXP{config["exp"]}',
+                               config=config,
                                log_model="all",
                                save_dir=config["output_dir"]) # This is equivalent to wandb.init()
     
