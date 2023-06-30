@@ -126,8 +126,8 @@ for fold in config["train_folds"]:
     early_stop_callback = EarlyStopping(**config["early_stop"])
 
     wandb_logger = WandbLogger(project=proj_name, 
-                               name=f'fold{fold}_exp{config["exp"]}',
-                               id=f'fold{fold}_exp{config["exp"]}',
+                               name=f'FOLD{fold}-EXP{config["exp"]}',
+                               id=f'FOLD{fold}-EXP{config["exp"]}',
                                log_model="all",
                                save_dir=config["output_dir"]) # This is equivalent to wandb.init()
     
