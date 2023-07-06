@@ -7,8 +7,14 @@ https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-gl
 # Results
 
 # Ideas
+- Increase image size (384 -> 512)
+- Increase folds (4 -> 5 or 10)
+- Threshold optimization: `np.arange(0.01, 0.51, 0.01)`
 
 # CV Folds
+- [Kfold(train + valid)](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/416395#2295731)
+- [Kfold(train) + valid](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/413153#2315071)
+- Kfold(valid) + train
 
 # 反省点
 
@@ -19,12 +25,14 @@ https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-gl
 # W&B
 
 # Kaggle Discussions
+- [Increasing image size doesn't work for me on LB](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/420079)
 
 # Kaggle Code
 - [Contrails Dataset (Ash Color)](https://www.kaggle.com/code/shashwatraman/contrails-dataset-ash-color/notebook)
 - [Simple Unet Baseline (Train) - [LB 0.580]](https://www.kaggle.com/code/shashwatraman/simple-unet-baseline-train-lb-0-580/notebook)
 - [Simple Unet Baseline (Infer) - [LB 0.580]](https://www.kaggle.com/code/shashwatraman/simple-unet-baseline-infer-lb-0-580/notebook)
 - [[GR-ICRGW] Training with 4 folds](https://www.kaggle.com/code/egortrushin/gr-icrgw-training-with-4-folds/notebook)
+- [[GR-ICRGW] Training with 4 folds Inference](https://www.kaggle.com/code/riow1983/gr-icrgw-training-with-4-folds-inference)
 
 # Kaggle Datasets
 - [Contrails Images (Ash Color)](https://www.kaggle.com/datasets/shashwatraman/contrails-images-ash-color?select=contrails)
@@ -128,7 +136,7 @@ for MODEL_PATH in MODEL_PATHS:
                 current_image_id = image_id[img_num].item()
                 model_preds[current_image_id] = current_mask
         all_preds[f"f{i}"] = model_preds
-        list_all_preds.append(all_preds)
+    list_all_preds.append(all_preds)
 
 
 for index in submission.index.tolist():

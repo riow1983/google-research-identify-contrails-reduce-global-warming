@@ -28,7 +28,7 @@ class LightningModule(pl.LightningModule):
     def __init__(self, config):
         super().__init__()
         self.config = config
-        self.model = model = seg_models[config["seg_model"]](
+        self.model = seg_models[config["seg_model"]](
             encoder_name=config["encoder_name"],
             encoder_weights="imagenet",
             in_channels=3,
