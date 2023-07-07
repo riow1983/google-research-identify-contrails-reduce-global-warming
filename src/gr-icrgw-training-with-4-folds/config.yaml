@@ -1,7 +1,7 @@
-exp: 1 #"debug"
+exp: 0 #"debug"
 # data_path: "/kaggle/input/contrails-images-ash-color"
 data_path: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/input/contrails-images-ash-color"
-output_dir: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/output/gr-icrgw-training-with-4-folds/fpn_models"
+output_dir: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/output/gr-icrgw-training-with-4-folds/pan_models"
 
 wandb_json_path: "/content/drive/MyDrive/colab_notebooks/kaggle/wandb.json"
 line_json_path: "/content/drive/MyDrive/colab_notebooks/kaggle/line.json"
@@ -13,8 +13,8 @@ train_folds: [0, 1, 2, 3]
     
 seed: 42
 
-train_bs: 96 # 48
-valid_bs: 256 # 128
+train_bs: 48
+valid_bs: 128
 workers: 2
 
 progress_bar_refresh_rate: 1
@@ -33,10 +33,10 @@ trainer:
     devices: 1 #2
 
 model:
-    seg_model: "FPN"
+    seg_model: "PAN"
     encoder_name: "timm-resnest26d"
     loss_smooth: 1.0
-    image_size: 512 # 384
+    image_size: 384
     optimizer_params:
         lr: 0.0005
         weight_decay: 0.0
