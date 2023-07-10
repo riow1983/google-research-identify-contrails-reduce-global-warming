@@ -161,4 +161,5 @@ for index in submission.index.tolist():
 ```
 
 ## 2023-07-10
-segmentation models pytorchにtimmのencoderを使う方法を説明した[公式ページ](https://smp.readthedocs.io/en/latest/encoders_timm.html)発見. そしてここにどのencoderがdilated modeに対応しているのか書いてあった. 長いことかかってしまった.
+segmentation models pytorchにtimmのencoderを使う方法を説明した[公式ページ](https://smp.readthedocs.io/en/latest/encoders_timm.html)発見. そしてここにどのencoderがdilated modeに対応しているのか書いてあった. 長いことかかってしまった.<br>
+ToDo: [inference code](https://www.kaggle.com/code/riow1983/gr-icrgw-training-with-4-folds-inference)のinputにhttps://www.kaggle.com/datasets/ar90ngas/timm-pretrained-efficientnet を加える.
