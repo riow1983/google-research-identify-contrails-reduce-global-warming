@@ -159,3 +159,6 @@ for index in submission.index.tolist():
     predicted_mask_with_threshold[predicted_mask[0, :, :] > THR] = 1
     submission.loc[int(index), 'encoded_pixels'] = list_to_string(rle_encode(predicted_mask_with_threshold))
 ```
+
+## 2023-07-10
+segmentation models pytorchにtimmのencoderを使う方法を説明した[公式ページ](https://smp.readthedocs.io/en/latest/encoders_timm.html)発見. そしてここにどのencoderがdilated modeに対応しているのか書いてあった. 長いことかかってしまった.
