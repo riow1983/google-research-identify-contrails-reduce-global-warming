@@ -34,7 +34,7 @@ trainer:
 
 model:
     seg_model: "DeepLabV3+"
-    encoder_name: "timm-efficientnet_b0" # "timm-resnest26d"
+    encoder_name: "timm-efficientnet-b0" # "timm-resnest26d"
     loss_smooth: 1.0
     image_size: 384
     optimizer_params:
