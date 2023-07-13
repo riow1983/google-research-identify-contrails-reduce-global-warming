@@ -21,8 +21,8 @@ import segmentation_models_pytorch as smp
 
 os.system("mkdir -p /root/.cache/torch/hub/checkpoints/")
 # os.system(f"cp /content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/timm-pretrained-resnest/resnest/gluon_resnest26-50eb607c.pth /root/.cache/torch/hub/checkpoints/gluon_resnest26-50eb607c.pth")
-os.system(f"cp /content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/timm-pretrained-efficientnet/efficientnet/efficientnet_b0_ra-3dd342df.pth /root/.cache/torch/hub/checkpoints/efficientnet_b0_ra-3dd342df.pth")
-
+# os.system(f"cp /content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/timm-pretrained-efficientnet/efficientnet/efficientnet_b0_ra-3dd342df.pth /root/.cache/torch/hub/checkpoints/efficientnet_b0_ra-3dd342df.pth")
+os.system(f"cp /content/drive/MyDrive/colab_notebooks/kaggle/{comp_name}/input/timm-pretrained-efficientnet/efficientnet/efficientnet_b4_ra2_320-7eb33cd5.pth /root/.cache/torch/hub/checkpoints/efficientnet_b4_ra2_320-7eb33cd5.pth")
 
 import warnings
 
