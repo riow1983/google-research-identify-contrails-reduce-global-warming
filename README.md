@@ -163,3 +163,11 @@ for index in submission.index.tolist():
 ## 2023-07-10
 segmentation models pytorchにtimmのencoderを使う方法を説明した[公式ページ](https://smp.readthedocs.io/en/latest/encoders_timm.html)発見. そしてここにどのencoderがdilated modeに対応しているのか書いてあった. 長いことかかってしまった.<br>
 ToDo: [inference code](https://www.kaggle.com/code/riow1983/gr-icrgw-training-with-4-folds-inference)のinputにhttps://www.kaggle.com/datasets/ar90ngas/timm-pretrained-efficientnet を加える.
+
+## 2023-07-11
+ecoderに`timm-efficientnet-b0`を使い, DeepLabV3PlusのEXP 0を実行.<br>
+[Discussion](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/415176)にて, [Simple Unet Baseline (Train) - [LB 0.580]](https://www.kaggle.com/code/shashwatraman/simple-unet-baseline-train-lb-0-580/notebook)が改良された旨認知した. > Using EfficientNet B3, adding some augmentations and training for 30 epochs, the new version of the baseline gets a lb score of 0.628.
+
+また[Discussion](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/413767)にて, UnetにBatchNormを加えると良いというtipsが公開されていた. > I don't remember since i use smp implementation now which has a parameter for enabling BatchNorm. I recall it did improve the CV but also sped up training by lowering the number of epochs needed.
+
+しかしこれは`smp.Unet()`ではデフォルトでBatchNormが挿入されているのでは?
