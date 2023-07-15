@@ -179,4 +179,8 @@ ecoderに`timm-efficientnet-b0`を使い, DeepLabV3PlusのEXP 0を実行.<br><br
 [Discussion](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/409624) によると, マスクがブランクのものが57のrecord_idで見つかったとのこと. ただし、これらが学習データから除外されるべきかというとそうでは無いと思う. 飛行機雲が存在しない画像もあるからだ.<br><br>
 WCEとDICEの組み合わせは上手くいかないとのこと: https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/412554#2279642<br><br>
 メタデータ (record_idごとの時空間情報など)はtestデータでは利用できないとのこと: https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/419562#2318687<br>
-とするとCV作成時に利用するくらいか. なお[メタデータ(jsonファイル)を読み込むときはrecord_idのデータ型を`str`型に指定してやる必要がある](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/418016#2311814)とのこと.
+とするとCV作成時に利用するくらいか. なお[メタデータ(jsonファイル)を読み込むときはrecord_idのデータ型を`str`型に指定してやる必要がある](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/418016#2311814)とのこと.<br><br>
+ToDo: train.metadata.geolocationとvalid.metadata.geolocationの分布の違いを確認
+
+## 2023-07-16
+`efficientnetB4 + FPN`は遅すぎるため, `efficientnetB4 + deeplabv3plus`に挑戦. しかし`efficientnetB0 + deeplabv3plus`では最後の4fold目で意味不明なエラーだった. これが再発しないことを期待.
