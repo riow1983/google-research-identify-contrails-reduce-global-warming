@@ -1,4 +1,4 @@
-exp: 1 # "debug"
+exp: 0 # "debug"
 # data_path: "/kaggle/input/contrails-images-ash-color"
 data_path: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/input/contrails-images-ash-color"
 output_dir: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/output/gr-icrgw-training-with-4-folds/fpn_models"
@@ -13,8 +13,8 @@ train_folds: [0, 1, 2, 3]
     
 seed: 42
 
-train_bs: 96 # 48
-valid_bs: 256 # 128
+train_bs: 48
+valid_bs: 128
 workers: 2
 
 progress_bar_refresh_rate: 1
@@ -26,14 +26,14 @@ early_stop:
     verbose: 1
 
 trainer:
-    max_epochs: 10 # 20
-    min_epochs: 10 # 20
+    max_epochs: 20
+    min_epochs: 20
     enable_progress_bar: True
     precision: 16 #"16-mixed"
     devices: 1 #2
 
 model:
-    seg_model: "FPN" # "DeepLabV3+"
+    seg_model: "DeepLabV3+" # "DeepLabV3+"
     encoder_name: "timm-efficientnet-b4" # "timm-resnest26d"
     loss_smooth: 1.0
     image_size: 384
