@@ -172,4 +172,11 @@ ecoderに`timm-efficientnet-b0`を使い, DeepLabV3PlusのEXP 0を実行.<br><br
 また[Discussion](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/413767)にて, UnetにBatchNormを加えると良いというtipsが公開されていた.
 > I don't remember since i use smp implementation now which has a parameter for enabling BatchNorm. I recall it did improve the CV but also sped up training by lowering the number of epochs needed.
 
-しかしこれは`smp.Unet()`ではデフォルトでBatchNormが挿入されているのでは?
+しかしこれは`smp.Unet()`ではデフォルトでBatchNormが挿入されている.
+
+## 2023-07-14
+`efficientnetB0 + deeplabv3plus`は最後の4fold目で意味不明なエラー. これはやめて`efficientnetB4 + FPN`を試すことにした. こちらepoch 0はtrain+validで2時間近くかかったが, epoch 1以降は5分で終わる.<br><br>
+[Discussion](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/409624) によると, マスクがブランクのものが57のrecord_idで見つかったとのこと. ただし、これらが学習データから除外されるべきかというとそうでは無いと思う. 飛行機雲が存在しない画像もあるからだ.<br><br>
+WCEとDICEの組み合わせは上手くいかないとのこと: https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/412554#2279642<br><br>
+メタデータ (record_idごとの時空間情報など)はtestデータでは利用できないとのこと: https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/419562#2318687<br>
+とするとCV作成時に利用するくらいか. なお[メタデータ(jsonファイル)を読み込むときはrecord_idのデータ型を`str`型に指定してやる必要がある](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/418016#2311814)とのこと.
