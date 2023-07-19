@@ -1,4 +1,4 @@
-exp: 0 # "debug"
+exp: "debug" # "debug"
 # data_path: "/kaggle/input/contrails-images-ash-color"
 data_path: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/input/contrails-images-ash-color"
 output_dir: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/output/gr-icrgw-training-with-4-folds/deeplabv3plus_models"
@@ -34,7 +34,7 @@ trainer:
 
 model:
     seg_model: "DeepLabV3+" # "DeepLabV3+"
-    encoder_name: "timm-efficientnet-b4" # "timm-resnest26d"
+    encoder_name: "resnet101" # "timm-efficientnet-b4" # "timm-resnest26d"
     loss_smooth: 1.0
     image_size: 384
     optimizer_params:
