@@ -187,3 +187,6 @@ ToDo: train.metadata.geolocationとvalid.metadata.geolocationの分布の違い�
 
 ## 2023-07-19
 `efficientnetB4 + deeplabv3plus`は0 fold目で原因不明の停止が発生. もしかするとtimm系のencoderが原因かも分からないので, encoderにtimmを使う方針を放棄し, segmentation models pytorch内蔵のencoderに切り替える. `DeepLabV3+ w/ resnet101 (smp内蔵)`で再挑戦.
+
+## 2023-07-21
+`DeepLabV3+ w/ resnet101 (smp内蔵)`は3 fold目で中絶していた. 改めて3 fold目だけ実行するか.
