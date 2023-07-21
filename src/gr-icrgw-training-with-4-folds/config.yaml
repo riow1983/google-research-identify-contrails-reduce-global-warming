@@ -9,7 +9,7 @@ line_json_path: "/content/drive/MyDrive/colab_notebooks/kaggle/line.json"
 folds:
     n_splits: 4
     random_state: 42
-train_folds: [0, 1, 2, 3]
+train_folds: [3,] #[0, 1, 2, 3]
     
 seed: 42
 
