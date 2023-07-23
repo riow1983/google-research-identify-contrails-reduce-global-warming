@@ -189,4 +189,5 @@ ToDo: train.metadata.geolocationとvalid.metadata.geolocationの分布の違い�
 `efficientnetB4 + deeplabv3plus`は0 fold目で原因不明の停止が発生. もしかするとtimm系のencoderが原因かも分からないので, encoderにtimmを使う方針を放棄し, segmentation models pytorch内蔵のencoderに切り替える. `DeepLabV3+ w/ resnet101 (smp内蔵)`で再挑戦.
 
 ## 2023-07-21
-`DeepLabV3+ w/ resnet101 (smp内蔵)`は3 fold目で中絶していた. 改めて3 fold目だけ実行するか.
+`DeepLabV3+ w/ resnet101 (smp内蔵)`は3 fold目で中絶していた. 改めて3 fold目だけ実行するか.<br>
+Ensembling of `Unet w/ timm-resnest26d` (LB: 0.646) and `DeepLabV3+ w/ resnet101` ended up with LB 0.631. The average CVs of `DeepLabV3+ w/ resnet101` was around 0.60, whereas `Unet w/ timm-resnest26d`'s was 0.66. Have to seek a more accurate model.
