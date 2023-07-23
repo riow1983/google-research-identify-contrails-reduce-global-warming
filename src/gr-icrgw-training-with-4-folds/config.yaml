@@ -1,7 +1,7 @@
-exp: 0 # "debug"
+exp: "debug"
 # data_path: "/kaggle/input/contrails-images-ash-color"
 data_path: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/input/contrails-images-ash-color"
-output_dir: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/output/gr-icrgw-training-with-4-folds/deeplabv3plus_models"
+output_dir: "/content/drive/MyDrive/colab_notebooks/kaggle/google-research-identify-contrails-reduce-global-warming/output/gr-icrgw-training-with-4-folds/unetplusplus-models"
 
 wandb_json_path: "/content/drive/MyDrive/colab_notebooks/kaggle/wandb.json"
 line_json_path: "/content/drive/MyDrive/colab_notebooks/kaggle/line.json"
@@ -9,7 +9,7 @@ line_json_path: "/content/drive/MyDrive/colab_notebooks/kaggle/line.json"
 folds:
     n_splits: 4
     random_state: 42
-train_folds: [3,] #[0, 1, 2, 3]
+train_folds: [0, 1, 2, 3]
     
 seed: 42
 
@@ -33,7 +33,7 @@ trainer:
     devices: 1 #2
 
 model:
-    seg_model: "DeepLabV3+" # "DeepLabV3+"
+    seg_model: "Unet++" # "DeepLabV3+"
     encoder_name: "resnet101" # "timm-efficientnet-b4" # "timm-resnest26d"
     loss_smooth: 1.0
     image_size: 384
