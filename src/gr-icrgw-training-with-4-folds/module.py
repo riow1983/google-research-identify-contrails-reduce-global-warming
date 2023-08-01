@@ -11,6 +11,8 @@ import torch.nn as nn
 from torchmetrics.functional import dice
 from transformers import get_cosine_with_hard_restarts_schedule_with_warmup
 
+from loss import criterion
+
 seg_models = {
     "Unet": smp.Unet,
     "Unet++": smp.UnetPlusPlus,
@@ -35,7 +37,7 @@ class LightningModule(pl.LightningModule):
             classes=1,
             activation=None,
         )
-        self.loss_module = smp.losses.DiceLoss(mode="binary", smooth=config["loss_smooth"])
+        self.loss_module = criterion # smp.losses.DiceLoss(mode="binary", smooth=config["loss_smooth"]) # criterion
         self.val_step_outputs = []
         self.val_step_labels = []
 
