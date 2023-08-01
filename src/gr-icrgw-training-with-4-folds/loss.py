@@ -11,7 +11,7 @@ import yaml
 with open("config.yaml", "r") as file_obj:
     config = yaml.safe_load(file_obj)
 
-DiceLoss = smp.losses.DiceLoss(mode='binary', smooth=config["loss_smooth"])
+DiceLoss = smp.losses.DiceLoss(mode='binary')
 BCELoss = smp.losses.SoftBCEWithLogitsLoss()
 alpha = 0.5
 beta = 1 - alpha
