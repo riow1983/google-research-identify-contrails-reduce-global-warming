@@ -203,3 +203,6 @@ Other topics I could deep further:
 
 ## 2023-07-27
 `Unet++ w/ resnet101` has been finished and uploaded to Kaggle. But the result of ensembling with `Unet w/ timm-resnest26d` was not better than the single `Unet w/ timm-resnest26d`.
+
+## 2023-08-01
+Will try to modify the loss function. For the first hand, the single `Unet w/ timm-resnest26d` will be used for this experiment.
