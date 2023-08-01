@@ -191,3 +191,15 @@ ToDo: train.metadata.geolocationとvalid.metadata.geolocationの分布の違い�
 ## 2023-07-21
 `DeepLabV3+ w/ resnet101 (smp内蔵)`は3 fold目で中絶していた. 改めて3 fold目だけ実行するか.<br>
 Ensembling of `Unet w/ timm-resnest26d` (LB: 0.646) and `DeepLabV3+ w/ resnet101` ended up with LB 0.631. The average CVs of `DeepLabV3+ w/ resnet101` was around 0.60, whereas `Unet w/ timm-resnest26d`'s was 0.66. Have to seek a more accurate model.
+
+## 2023-07-24
+Started to run `Unet++ w/ resnet101`. During this, reading discussions in order to decide which direction I should dig next:
+- [3D or 2.5D models does not help](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/419816)
+Other topics I could deep further:
+- Loss modification
+- EDA revisit
+- CV modification
+- Different train datasets
+
+## 2023-07-27
+`Unet++ w/ resnet101` has been finished and uploaded to Kaggle. But the result of ensembling with `Unet w/ timm-resnest26d` was not better than the single `Unet w/ timm-resnest26d`.
