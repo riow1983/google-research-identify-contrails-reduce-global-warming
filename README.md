@@ -206,3 +206,9 @@ Other topics I could deep further:
 
 ## 2023-08-01
 Will try to modify the loss function. For the first hand, the single `Unet w/ timm-resnest26d` will be used for this experiment.
+
+## 2023-08-04
+Experimental run with Loss modification has been completed. But the results were about the same with the one with no modification. ~Will try to get it be involoved in the ensemble, though.~ Will try to submit it as a single model and see the LB result. 
+
+## 2023-08-05
+The result was 0.641 which is not better than single Unet w.o. loss modification (0.646). But CV was better than w.o. modification. So I'll choose this modification one over the w.o. modification.
