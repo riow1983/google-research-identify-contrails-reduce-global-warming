@@ -7,7 +7,7 @@ https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-gl
 # Results
 272 / 954 (Top 29%)<br>
 Single Unet w/ loss modification
-![image](/submissions.png)
+![image](https://github.com/riow1983/google-research-identify-contrails-reduce-global-warming/blob/main/png/submissions.png)
 - Private LB of Single Unet w/ loss modification was better than that of pure Singule Unet. The loss modification works!
 - Unet w/ loss modification + Unet++ did not surpass Single Unet w/ loss modification.
 
@@ -40,16 +40,16 @@ for n, (trn_index, val_index) in enumerate(Fold.split(df)):
 # 反省点
 
 # Top solutions
-[1](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430618)
-[2](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430491)
-[3](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430685)
-[4](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/432998)
-[5](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430549)
-[6](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430581)
-[7](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430691)
-[8](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430543)
-[9](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430479)
-[10]
+- [1](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430618)
+- [2](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430491)
+- [3](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430685)
+- [4](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/432998)
+- [5](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430549)
+- [6](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430581)
+- [7](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430691)
+- [8](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430543)
+- [9](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430479)
+- [10]
 
 Summary blog: https://zenn.dev/yume_neko/articles/464e6ade7bd736
 
@@ -57,7 +57,7 @@ Summary blog: https://zenn.dev/yume_neko/articles/464e6ade7bd736
 
 # W&B
 https://wandb.ai/riow1983/gr-icrgw-training-with-4-folds?workspace=user-riow1983
-![image](/experiments.png)
+![image](https://github.com/riow1983/google-research-identify-contrails-reduce-global-warming/blob/main/png/experiments.png)
 
 # Kaggle Discussions
 - [Increasing image size doesn't work for me on LB](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/420079)
@@ -87,7 +87,7 @@ valid_df.shape:  (1856, 2)
 # Tips
 - W&Bのrunはdeleteすると, 同じrun idのrunが実行出来なくなるので要注意 (逆に同一run idのrunが存在している場合はresumeされる)
 - Writing evaluation value within a model name is good practice
-![image](/drive.png)
+![image](https://github.com/riow1983/google-research-identify-contrails-reduce-global-warming/blob/main/png/drive.png)
 
 # Snipets
 
