@@ -5,6 +5,11 @@ google-research-identify-contrails-reduce-global-warming
 https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/overview
 
 # Results
+272 / 954 (Top 29%)<br>
+Single Unet w/ loss modification
+![image](/submissions.png)
+- Private LB of Single Unet w/ loss modification was better than that of pure Singule Unet. The loss modification works!
+- Unet w/ loss modification + Unet++ did not surpass Single Unet w/ loss modification.
 
 # Ideas
 - Increase image size (384 -> 512)
@@ -16,16 +21,47 @@ https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-gl
 - [Kfold(train) + valid](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/413153#2315071)
 - Kfold(valid) + train
 
+Eventually, adopted the first one (Kfold(train+valid)):
+```yaml
+# config.yaml
+
+folds:
+    n_splits: 4
+    random_state: 42
+```
+```python
+df = pd.concat([train_df, valid_df]).reset_index()
+
+Fold = KFold(shuffle=True, **config["folds"])
+for n, (trn_index, val_index) in enumerate(Fold.split(df)):
+    df.loc[val_index, "kfold"] = int(n)
+```
+
 # 反省点
 
 # Top solutions
+[1](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430618)
+[2](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430491)
+[3](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430685)
+[4](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/432998)
+[5](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430549)
+[6](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430581)
+[7](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430691)
+[8](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430543)
+[9](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430479)
+[10]
+
+Summary blog: https://zenn.dev/yume_neko/articles/464e6ade7bd736
 
 # Q&A
 
 # W&B
+https://wandb.ai/riow1983/gr-icrgw-training-with-4-folds?workspace=user-riow1983
+![image](/experiments.png)
 
 # Kaggle Discussions
 - [Increasing image size doesn't work for me on LB](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/420079)
+- [How misalignment of label occures?](https://www.kaggle.com/competitions/google-research-identify-contrails-reduce-global-warming/discussion/430749)
 
 # Kaggle Code
 - [Contrails Dataset (Ash Color)](https://www.kaggle.com/code/shashwatraman/contrails-dataset-ash-color/notebook)
@@ -50,6 +86,8 @@ valid_df.shape:  (1856, 2)
 
 # Tips
 - W&Bのrunはdeleteすると, 同じrun idのrunが実行出来なくなるので要注意 (逆に同一run idのrunが存在している場合はresumeされる)
+- Writing evaluation value within a model name is good practice
+![image](/drive.png)
 
 # Snipets
 
@@ -212,3 +250,7 @@ Experimental run with Loss modification has been completed. But the results were
 
 ## 2023-08-05
 The result was 0.641 which is not better than single Unet w.o. loss modification (0.646). But CV was better than w.o. modification. So I'll choose this modification one over the w.o. modification.
+
+## 2023-08-09
+The computing units of my Colab Pro+ has run out. So no more experiments. Regarding inference part, I will run Unet w/ loss modification + Unet++. <br>
+Upvoted and added a comment to [[FeatureSuggestion] VSCode remote ssh into a kaggle notebook](https://www.kaggle.com/discussions/product-feedback/291433#2375885).
